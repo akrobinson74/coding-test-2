@@ -1,6 +1,6 @@
-package com.crossengage.dto;
+package com.crossengage.model;
 
-import com.crossengage.ContactPointFactory;
+import com.crossengage.controller.AcceptsVisitors;
 
 import java.util.Arrays;
 import java.util.HashSet;

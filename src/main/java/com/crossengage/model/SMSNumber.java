@@ -1,4 +1,7 @@
-package com.crossengage.dto;
+package com.crossengage.model;
+
+import com.crossengage.controller.ContactPoint;
+import com.crossengage.controller.ContactPointVisitor;
 
 import java.util.function.Function;
 
@@ -6,14 +9,15 @@ import java.util.function.Function;
  *
  */
 public class SMSNumber extends ContactPoint {
-    private final String number;
+    private final String data;
 
-    public SMSNumber(String number) {
-        this.number = number;
+    public SMSNumber(String data) {
+        this.data = data;
     }
 
-    public String getNumber() {
-        return number;
+    @Override
+    public String getData() {
+        return data;
     }
 
     @Override
@@ -28,24 +32,18 @@ public class SMSNumber extends ContactPoint {
 
         SMSNumber smsNumber = (SMSNumber) o;
 
-        return number != null ? number.equals(smsNumber.number) :
-            smsNumber.number == null;
+        return data.equals(smsNumber.data);
     }
 
     @Override
     public int hashCode() {
-        return number != null ? number.hashCode() : 0;
+        return data.hashCode();
     }
 
     @Override
     public String toString() {
         return "SMSNumber{" +
-            "number='" + number + '\'' +
+            "data='" + data + '\'' +
             '}';
-    }
-
-    @Override
-    public String getData() {
-        return getNumber();
     }
 }

@@ -1,8 +1,6 @@
-package com.crossengage;
+package com.crossengage.model;
 
-import com.crossengage.dto.AcceptsVisitors;
-import com.crossengage.dto.EmailAddress;
-import com.crossengage.dto.SMSNumber;
+import com.crossengage.controller.AcceptsVisitors;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

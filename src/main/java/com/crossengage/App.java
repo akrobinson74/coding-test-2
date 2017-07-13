@@ -1,7 +1,9 @@
 package com.crossengage;
 
 import com.crossengage.dao.UserRepository;
-import com.crossengage.dto.ContactPointVisitor;
+import com.crossengage.controller.ContactPointVisitor;
+import com.crossengage.controller.EmailTransmitter;
+import com.crossengage.controller.SMSTransmitter;
 
 import java.io.File;
 import java.io.IOException;

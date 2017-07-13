@@ -1,8 +1,6 @@
-package com.crossengage;
+package com.crossengage.controller;
 
-import com.crossengage.dto.AcceptsVisitors;
-import com.crossengage.dto.ContactPointVisitor;
-import com.crossengage.dto.User;
+import com.crossengage.model.User;
 
 import java.util.function.Function;
 

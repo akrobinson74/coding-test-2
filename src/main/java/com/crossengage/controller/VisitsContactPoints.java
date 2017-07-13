@@ -1,4 +1,6 @@
-package com.crossengage.dto;
+package com.crossengage.controller;
+
+import com.crossengage.model.User;
 
 import java.util.function.Function;
 

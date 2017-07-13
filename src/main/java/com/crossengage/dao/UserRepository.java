@@ -1,6 +1,6 @@
 package com.crossengage.dao;
 
-import com.crossengage.dto.User;
+import com.crossengage.model.User;
 
 import java.io.File;
 import java.io.IOException;

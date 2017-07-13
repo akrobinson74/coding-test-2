@@ -1,4 +1,4 @@
-package com.crossengage.dto;
+package com.crossengage.model;
 
 /**
  *
