@@ -1,4 +1,4 @@
-package com.crossengage;
+package com.crossengage.dao;
 
 import com.crossengage.dao.UserRepository;
 import com.crossengage.model.User;
