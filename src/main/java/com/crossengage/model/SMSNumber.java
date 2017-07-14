@@ -1,5 +1,6 @@
 package com.crossengage.model;
 
+import com.crossengage.controller.ContactPointVisitor;
 import com.crossengage.controller.GenericContactPointVisitor;
 import com.crossengage.controller.GenericVisitable;
 
@@ -23,6 +24,16 @@ public class SMSNumber implements GenericVisitable<SMSNumber> {
     @Override
     public Function<String, Boolean> accept(
         GenericContactPointVisitor<SMSNumber> visitor, User user) {
+
+        /*
+        return a function that yields false if the ContactMeans is not
+        supported for this user
+        */
+        if (!(user.getContactMeans().equals(ContactMeans.phone) &&
+            !(user.getContactMeans().equals(ContactMeans.all)))) {
+            return ContactPointVisitor.getNOOP();
+        }
+
         return visitor.visit(this, user);
     }
 

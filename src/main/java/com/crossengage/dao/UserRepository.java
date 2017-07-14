@@ -26,11 +26,12 @@ public class UserRepository {
                 .collect(Collectors.toList());
     }
 
-    public Stream<User> getAllValidUsers() throws IOException {
+    public Stream<User> getValidUsers() throws IOException {
         return Files.lines(data.toPath())
             .skip(1)
             .map(line -> line.split(","))
             .map(fields -> User.getUserForStrings(fields))
+            // filter out inactive User objects
             .filter(user -> user != null && user.isValid())
             .collect(Collectors.toList())
             .stream();

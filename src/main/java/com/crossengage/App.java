@@ -7,7 +7,6 @@ import com.crossengage.dao.UserRepository;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Function;
@@ -21,19 +20,18 @@ public class App {
 
     static {
         LOGGER = Logger.getLogger("App");
-        LOGGER.setLevel(Level.SEVERE);
+        LOGGER.setLevel(Level.WARNING);
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println("START: " + LocalDateTime.now());
 
         UserRepository repository = new UserRepository(new File(args[0]));
 
-        repository.getAllValidUsers().forEach(
+        repository.getValidUsers().forEach(
 
             user -> {
 
-                user.getAcceptsVisitors().stream().filter(cp -> cp != null).forEach(
+                user.getGenericVisitablesSet().stream().filter(cp -> cp != null).forEach(
 
                     contactPoint -> {
                         /*
@@ -43,17 +41,21 @@ public class App {
                          */
                         for (GenericContactPointVisitor visitor : CONTACT_POINT_VISITORS) {
 
-                            Function<String, Boolean> visitableClosure =
-                                contactPoint.accept(visitor, user);
-
-                            if (visitableClosure != null ||
-                                !(visitableClosure.apply("Welcome to the System!"))) {
+                            try {
+                                Function<String, Boolean> visitableClosure =
+                                    contactPoint.accept(visitor, user);
+                                visitableClosure
+                                    .apply("Welcome to the System!");
+                            }
+                            catch (Exception e) {
                                 LOGGER.log(Level.WARNING,
-                                    String.format("User [%d] doesn't support a ContactPoint of type [%s]",
+                                    String.format("User [%d] doesn't support a ContactPoint of type [%s]: %s",
                                         user.getId(),
-                                        visitor.getClass().getName())
+                                        visitor.getClass().getName(),
+                                        e.getMessage())
                                 );
                             }
+
                         }
                     }
 
@@ -62,8 +64,6 @@ public class App {
             }
 
         );
-
-        System.out.println("END:   " + LocalDateTime.now());
 
     }
 

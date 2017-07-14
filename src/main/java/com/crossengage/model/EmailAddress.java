@@ -1,5 +1,6 @@
 package com.crossengage.model;
 
+import com.crossengage.controller.ContactPointVisitor;
 import com.crossengage.controller.GenericContactPointVisitor;
 import com.crossengage.controller.GenericVisitable;
 
@@ -23,6 +24,12 @@ public class EmailAddress implements GenericVisitable<EmailAddress> {
     @Override
     public Function<String, Boolean> accept(
         GenericContactPointVisitor<EmailAddress> visitor, User user) {
+
+        if (!(user.getContactMeans().equals(ContactMeans.email) &&
+            !(user.getContactMeans().equals(ContactMeans.all)))) {
+            return ContactPointVisitor.getNOOP();
+        }
+
         return visitor.visit(this, user);
     }
 

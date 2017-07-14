@@ -14,19 +14,20 @@ public class User {
     private final Long id;
     private final Boolean active;
     private final ContactMeans contactMeans;
-    private final Set<GenericVisitable> acceptsVisitors;
+    private final Set<GenericVisitable> genericVisitableSet;
 
     public User(
         final Long id,
         final Boolean active,
         final ContactMeans contactMeans,
-        final HashSet<GenericVisitable> acceptsVisitors) {
+        final Set<GenericVisitable> genericVisitableSet) {
 
         this.id = id;
         this.active = active;
         this.contactMeans = contactMeans;
-        this.acceptsVisitors = acceptsVisitors.stream().filter(cp -> cp != null)
-            .collect(Collectors.toSet());
+        this.genericVisitableSet = genericVisitableSet != null ?
+            genericVisitableSet.stream().filter(cp -> cp != null)
+            .collect(Collectors.toSet()) : genericVisitableSet;
     }
 
     public Long getId() {
@@ -41,12 +42,12 @@ public class User {
         return contactMeans;
     }
 
-    public Set<GenericVisitable> getAcceptsVisitors() {
-        return acceptsVisitors;
+    public Set<GenericVisitable> getGenericVisitablesSet() {
+        return genericVisitableSet;
     }
 
     public boolean isValid() {
-        if (active && acceptsVisitors != null && acceptsVisitors.size() >= 1)
+        if (active && genericVisitableSet != null && genericVisitableSet.size() >= 1)
             return true;
         return false;
     }
@@ -62,9 +63,9 @@ public class User {
         if (! active.equals(user.active)) return false;
         if (contactMeans != user.contactMeans) return false;
 
-        return acceptsVisitors != null ?
-            acceptsVisitors.equals(user.acceptsVisitors) :
-            user.acceptsVisitors == null;
+        return genericVisitableSet != null ?
+            genericVisitableSet.equals(user.genericVisitableSet) :
+            user.genericVisitableSet == null;
     }
 
     @Override
@@ -72,7 +73,7 @@ public class User {
         int result = id.hashCode();
         result = 31 * result + active.hashCode();
         result = 31 * result + contactMeans.hashCode();
-        result = 31 * result + (acceptsVisitors != null ? acceptsVisitors.hashCode() : 0);
+        result = 31 * result + (genericVisitableSet != null ? genericVisitableSet.hashCode() : 0);
         return result;
     }
 
@@ -82,7 +83,7 @@ public class User {
             "id=" + id +
             ", active=" + active +
             ", contactMeans=" + contactMeans +
-            ", acceptsVisitors=" + acceptsVisitors +
+            ", genericVisitableSet=" + genericVisitableSet +
             '}';
     }
 
