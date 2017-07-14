@@ -21,6 +21,6 @@ public class UserTest {
     public void testNullContactPoint() {
         User u1 = new User(1L, true, ContactMeans.all, new HashSet<>(Arrays.asList(ContactPointFactory.getContactForData(":-)"))));
         // unrecognized contactPoint gets filtered
-        Assert.assertTrue("No valid input results in a null Set<GenericVisitable> field", u1.getGenericVisitablesSet() == null);
+        Assert.assertTrue("No valid input results in a null Set<GenericVisitable> field", u1.getGenericVisitablesSet().size() == 0);
     }
 }
