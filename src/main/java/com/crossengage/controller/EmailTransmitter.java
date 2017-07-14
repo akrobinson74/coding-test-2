@@ -1,5 +1,6 @@
 package com.crossengage.controller;
 
+import com.crossengage.model.EmailAddress;
 import com.crossengage.model.User;
 
 import java.util.function.Function;
@@ -7,17 +8,28 @@ import java.util.function.Function;
 /**
  *
  */
-public class EmailTransmitter extends ContactPointVisitor {
-    @Override
-    public Function<String, Boolean> visit(AcceptsVisitors acceptsVisitors, User user) {
-        return curryMsgArgs("Sending Email to " +
-            acceptsVisitors.getData() + " with text: ");
-    }
+public class EmailTransmitter extends ContactPointVisitor implements
+    GenericContactPointVisitor<EmailAddress> {
+//    @Override
+//    public boolean supports(ContactMeans contactMeans) {
+//        return contactMeans.equals(ContactMeans.email) ? true : false;
+//    }
+//
+//    @Override
+//    public Function<String, Boolean> visit(ContactPoint contactPoint, User user) {
+//        return curryMsgArgs(
+//            String.format("Sending Email to User [%d] at [%s] with text: ",
+//                user.getId(), contactPoint.getData()
+//            )
+//        );
+//    }
 
-    public Function<String, Boolean> curryMsgArgs(String preamble) {
-        return (String arg) -> {
-            System.out.println(preamble + arg);
-            return true;
-        };
+    @Override
+    public Function<String, Boolean> visit(EmailAddress emailAddress, User user) {
+        return curryMsgArgs(
+            String.format("Sending Email to User [%d] at [%s] with text: ",
+                user.getId(), emailAddress.getData()
+            )
+        );
     }
 }

@@ -1,14 +1,14 @@
 package com.crossengage.model;
 
-import com.crossengage.controller.ContactPoint;
-import com.crossengage.controller.ContactPointVisitor;
+import com.crossengage.controller.GenericContactPointVisitor;
+import com.crossengage.controller.GenericVisitable;
 
 import java.util.function.Function;
 
 /**
  *
  */
-public class EmailAddress extends ContactPoint {
+public class EmailAddress implements GenericVisitable<EmailAddress> {
     private final String data;
 
     public EmailAddress(String data) {
@@ -21,8 +21,9 @@ public class EmailAddress extends ContactPoint {
     }
 
     @Override
-    public Function<String, Boolean> accept(ContactPointVisitor contactPointVisitor, User user) {
-        return contactPointVisitor.visit(this, user);
+    public Function<String, Boolean> accept(
+        GenericContactPointVisitor<EmailAddress> visitor, User user) {
+        return visitor.visit(this, user);
     }
 
     @Override

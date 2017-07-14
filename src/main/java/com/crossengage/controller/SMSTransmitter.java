@@ -1,5 +1,6 @@
 package com.crossengage.controller;
 
+import com.crossengage.model.SMSNumber;
 import com.crossengage.model.User;
 
 import java.util.function.Function;
@@ -7,17 +8,16 @@ import java.util.function.Function;
 /**
  *
  */
-public class SMSTransmitter extends ContactPointVisitor {
-    @Override
-    public Function<String, Boolean> visit(AcceptsVisitors acceptsVisitors, User user) {
-        return curryMsgArgs("Sending SMS to " + acceptsVisitors.getData()
-            + " with text: ");
-    }
+public class SMSTransmitter extends ContactPointVisitor implements
+    GenericContactPointVisitor<SMSNumber> {
 
-    public Function<String, Boolean> curryMsgArgs(String preamble) {
-        return (String arg) -> {
-            System.out.println(preamble + arg);
-            return true;
-        };
+    @Override
+    public Function<String, Boolean> visit(
+        SMSNumber smsNumber, User user) {
+        return curryMsgArgs(
+            String.format("Sending SMS to User [%d] at [%s] with text: ",
+                user.getId(), smsNumber.getData()
+            )
+        );
     }
 }

@@ -1,6 +1,6 @@
 package com.crossengage.model;
 
-import com.crossengage.controller.AcceptsVisitors;
+import com.crossengage.controller.GenericVisitable;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,17 +13,17 @@ public class ContactPointFactory {
         Logger.getLogger("ContactPointFactory");
 
 
-    public static AcceptsVisitors getContactForData(String data) {
-        AcceptsVisitors acceptsVisitors = null;
+    public static GenericVisitable getContactForData(String data) {
+        GenericVisitable genericVisitable = null;
 
-        if (data.matches("^.+@.+\\..+$"))
-            acceptsVisitors = new EmailAddress(data);
+        if (data.matches("^[^@]+@[^@]+\\.[^@]+$"))
+            genericVisitable = new EmailAddress(data);
         else if (data.matches("^\\+\\d+$"))
-            acceptsVisitors = new SMSNumber(data);
+            genericVisitable = new SMSNumber(data);
         else
             LOGGER.log(Level.WARNING,
                 "Unknown or invalid contact data: " + data);
 
-        return acceptsVisitors;
+        return genericVisitable;
     }
 }

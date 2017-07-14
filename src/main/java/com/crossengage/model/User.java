@@ -1,6 +1,6 @@
 package com.crossengage.model;
 
-import com.crossengage.controller.AcceptsVisitors;
+import com.crossengage.controller.GenericVisitable;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -14,13 +14,13 @@ public class User {
     private final Long id;
     private final Boolean active;
     private final ContactMeans contactMeans;
-    private final Set<AcceptsVisitors> acceptsVisitors;
+    private final Set<GenericVisitable> acceptsVisitors;
 
     public User(
         final Long id,
         final Boolean active,
         final ContactMeans contactMeans,
-        final HashSet<AcceptsVisitors> acceptsVisitors) {
+        final HashSet<GenericVisitable> acceptsVisitors) {
 
         this.id = id;
         this.active = active;
@@ -41,7 +41,7 @@ public class User {
         return contactMeans;
     }
 
-    public Set<AcceptsVisitors> getAcceptsVisitors() {
+    public Set<GenericVisitable> getAcceptsVisitors() {
         return acceptsVisitors;
     }
 
@@ -91,7 +91,7 @@ public class User {
             Long.valueOf(fields[0]),
             Boolean.valueOf(fields[1]),
             ContactMeans.valueOf(fields[2]),
-            new HashSet<AcceptsVisitors>(
+            new HashSet<GenericVisitable>(
                 Arrays.asList(
                     ContactPointFactory.getContactForData(fields[3]),
                     ContactPointFactory.getContactForData(fields[4])

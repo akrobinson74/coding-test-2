@@ -7,6 +7,6 @@ import java.util.function.Function;
 /**
  *
  */
-public interface VisitsContactPoints {
-    Function<String, Boolean> visit(AcceptsVisitors acceptsVisitors, User user);
+public interface GenericContactPointVisitor<T> {
+    public Function<String, Boolean> visit(T t, User user);
 }
