@@ -1,6 +1,6 @@
-package com.crossengage.dao;
+package com.someprospectiveemployer.dao;
 
-import com.crossengage.model.User;
+import com.someprospectiveemployer.model.User;
 
 import java.io.File;
 import java.io.IOException;

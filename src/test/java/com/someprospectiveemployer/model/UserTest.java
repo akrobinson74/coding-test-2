@@ -1,4 +1,4 @@
-package com.crossengage.model;
+package com.someprospectiveemployer.model;
 
 import org.junit.Assert;
 import org.junit.Test;

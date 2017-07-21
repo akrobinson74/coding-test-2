@@ -1,6 +1,6 @@
-package com.crossengage.model;
+package com.someprospectiveemployer.model;
 
-import com.crossengage.controller.GenericVisitable;
+import com.someprospectiveemployer.controller.GenericVisitable;
 
 import java.util.Arrays;
 import java.util.HashSet;

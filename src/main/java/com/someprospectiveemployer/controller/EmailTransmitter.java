@@ -1,7 +1,7 @@
-package com.crossengage.controller;
+package com.someprospectiveemployer.controller;
 
-import com.crossengage.model.EmailAddress;
-import com.crossengage.model.User;
+import com.someprospectiveemployer.model.EmailAddress;
+import com.someprospectiveemployer.model.User;
 
 import java.util.function.Function;
 

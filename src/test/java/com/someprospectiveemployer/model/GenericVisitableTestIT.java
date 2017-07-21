@@ -1,8 +1,8 @@
-package com.crossengage.model;
+package com.someprospectiveemployer.model;
 
-import com.crossengage.controller.EmailTransmitter;
-import com.crossengage.controller.GenericContactPointVisitor;
-import com.crossengage.controller.SMSTransmitter;
+import com.someprospectiveemployer.controller.EmailTransmitter;
+import com.someprospectiveemployer.controller.GenericContactPointVisitor;
+import com.someprospectiveemployer.controller.SMSTransmitter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;

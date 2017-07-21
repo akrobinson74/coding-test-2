@@ -1,4 +1,4 @@
-package com.crossengage.controller;
+package com.someprospectiveemployer.controller;
 
 import java.util.function.Function;
 

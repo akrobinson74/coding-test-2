@@ -1,8 +1,8 @@
-package com.crossengage.model;
+package com.someprospectiveemployer.model;
 
-import com.crossengage.controller.ContactPointVisitor;
-import com.crossengage.controller.GenericContactPointVisitor;
-import com.crossengage.controller.GenericVisitable;
+import com.someprospectiveemployer.controller.ContactPointVisitor;
+import com.someprospectiveemployer.controller.GenericContactPointVisitor;
+import com.someprospectiveemployer.controller.GenericVisitable;
 
 import java.util.function.Function;
 

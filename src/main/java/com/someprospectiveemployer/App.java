@@ -1,9 +1,9 @@
-package com.crossengage;
+package com.someprospectiveemployer;
 
-import com.crossengage.controller.EmailTransmitter;
-import com.crossengage.controller.GenericContactPointVisitor;
-import com.crossengage.controller.SMSTransmitter;
-import com.crossengage.dao.UserRepository;
+import com.someprospectiveemployer.controller.EmailTransmitter;
+import com.someprospectiveemployer.controller.GenericContactPointVisitor;
+import com.someprospectiveemployer.controller.SMSTransmitter;
+import com.someprospectiveemployer.dao.UserRepository;
 
 import java.io.File;
 import java.io.IOException;

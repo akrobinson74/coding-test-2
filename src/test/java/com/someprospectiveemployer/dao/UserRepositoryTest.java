@@ -1,7 +1,6 @@
-package com.crossengage.dao;
+package com.someprospectiveemployer.dao;
 
-import com.crossengage.dao.UserRepository;
-import com.crossengage.model.User;
+import com.someprospectiveemployer.model.User;
 import org.junit.Test;
 
 import java.io.File;
